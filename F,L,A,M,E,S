@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr  2 08:02:25 2024
+
+@author: sreekar
+"""
+def remove_matching_letter(l1,l2):
+    for i in range(len(l1)):
+        for j in range(len(l2)):
+            if l1[i]==l2[j]:
+                c=l1[i]
+                l1.remove(c)
+                l2.remove(c)
+                l=l1+l2
+                return l
+def flames(p1,p2):
+    p1=p1.lower()
+    p1=p1.replace(' ','')
+
+    p2=p2.lower()
+    p2=p2.replace(' ','')
+    
+    l1=list(p1)
+    l2=list(p2)
+
+    ret_list=remove_matching_letter(l1,l2)
+
+    count=len(ret_list)
+
+    result=['friends','love','affection','marriage','enemies','sister']
+    rem_index=(count%len(result))-1
+    while len(result)>1:
+        result.remove(result[rem_index%len(result)])
+
+    print("relationship status:",result[0])
+
+
+p1=input("enter 1st person name:")
+p1=p1.lower()
+p1=p1.replace(' ','')
+
+p2=input("enter 2nd person name:")
+p2=p2.lower()
+p2=p2.replace(' ','')
+flames(p1,p2)
