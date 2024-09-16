@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr  2 13:51:20 2024
+
+@author: sreekar
+
+
+for i in range(6):
+    for j in range (5):
+       print (i,'-',j) 
+"""
+import numpy as np
+from PIL import Image
+im=Image.open('dua_lipa.jpeg')
+pixelmap=im.load()
+#this gives array odf image pixels
+#I= np.asanyarray(Image.open('dua_lipa.jpeg'))
+img=Image.new(im.mode,im.size)
+pixelnew=img.load()
+
+'''
+0-31=0
+32-63=1
+64-95=2
+96-127=3
+128-159=4
+160-191=5
+192-223=6
+224-255=7
+
+'''
+for i in range(img.size[0]):
+    for j in range(img.size[1]):
+        if (pixelmap[i,j]>=0 and pixelmap[i,j]<=31):
+            pixelnew[i,j]=0
+            
+        elif (pixelmap[i,j]>=32 and pixelmap[i,j]<=63):
+             pixelnew[i,j]=1
+             
+        elif (pixelmap[i,j]>=64 and pixelmap[i,j]<=95):
+             pixelnew[i,j]=2
+             
+        elif (pixelmap[i,j]>=96 and pixelmap[i,j]<=127):
+             pixelnew[i,j]=3
+             
+        elif (pixelmap[i,j]>=128 and pixelmap[i,j]<=159):
+             pixelnew[i,j]=4
+             
+        elif (pixelmap[i,j]>=160 and pixelmap[i,j]<=191):
+             pixelnew[i,j]=5
+            
+        elif (pixelmap[i,j]>=192 and pixelmap[i,j]<=223):
+             pixelnew[i,j]=6
+          
+        elif (pixelmap[i,j]>=224 and pixelmap[i,j]<=255):
+             pixelnew[i,j]=7
+             
+img.save('dua_lipa1.jpeg')
+J= np.asanyarry(Image.open('dua_lipa1.jpeg'))
+             
+             
